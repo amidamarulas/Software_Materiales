@@ -1,0 +1,38 @@
+[
+    {
+        "model": "materials.material",
+        "pk": 1,
+        "fields": {
+            "nombre": "Acero A36",
+            "densidad": 7850,
+            "modulo_elasticidad": 200000,
+            "limite_elastico": 250,
+            "resistencia_traccion": 400,
+            "dureza": 120
+        }
+    },
+    {
+        "model": "materials.material",
+        "pk": 2,
+        "fields": {
+            "nombre": "Aluminio 6061",
+            "densidad": 2700,
+            "modulo_elasticidad": 69000,
+            "limite_elastico": 275,
+            "resistencia_traccion": 310,
+            "dureza": 95
+        }
+    },
+    {
+        "model": "materials.material",
+        "pk": 3,
+        "fields": {
+            "nombre": "Titanio Ti-6Al-4V",
+            "densidad": 4430,
+            "modulo_elasticidad": 113000,
+            "limite_elastico": 880,
+            "resistencia_traccion": 950,
+            "dureza": 349
+        }
+    }
+]
