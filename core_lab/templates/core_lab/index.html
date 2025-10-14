@@ -1,0 +1,28 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8"/>
+  <title>CoreLab - Simulador de Materiales</title>
+  <link rel="stylesheet" href="{% static 'core_lab/css/style.css' %}">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <h1>CoreLab - Simulación de Materiales</h1>
+  <section>
+    <select id="select-material">
+      {% for m in materiales %}
+        <option value="{{ m.id }}">{{ m.nombre }}</option>
+      {% endfor %}
+    </select>
+    <select id="select-ensayo">
+      {% for e in ensayos %}
+        <option value="{{ e.id }}">{{ e.nombre }}</option>
+      {% endfor %}
+    </select>
+    <button id="btn-fetch">Simular</button>
+  </section>
+  <canvas id="chartED" width="600" height="300"></canvas>
+  <script src="{% static 'core_lab/js/main.js' %}"></script>
+</body>
+</html>
