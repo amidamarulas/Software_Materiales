@@ -1,0 +1,81 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CoreLab - Simulación de Materiales</title>
+
+  <!-- CSS global -->
+  <link rel="stylesheet" href="{% static 'core_lab/css/simulacion.css' %}">
+
+  <style>
+    /* Estilos globales básicos */
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f8f9fa;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #343a40;
+      color: white;
+      padding: 15px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 1.5rem;
+    }
+
+    nav a {
+      color: white;
+      margin-left: 15px;
+      text-decoration: none;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    main {
+      padding: 30px;
+    }
+
+    footer {
+      background-color: #343a40;
+      color: white;
+      text-align: center;
+      padding: 15px;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>🧪 CoreLab</h1>
+    <nav>
+      <a href="/core_lab/materiales/">Materiales</a>
+      <a href="/core_lab/simulacion/">Simulación</a>
+    </nav>
+  </header>
+
+  <main>
+    {% block content %}
+    {% endblock %}
+  </main>
+
+  <footer>
+    © 2025 CoreLab - Simulación de Ensayos de Materiales
+  </footer>
+
+  <!-- JS global -->
+  <script src="{% static 'core_lab/js/simulacion.js' %}"></script>
+</body>
+</html>
