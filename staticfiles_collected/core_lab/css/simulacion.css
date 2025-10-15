@@ -1,0 +1,175 @@
+/* Estilos generales para el contenedor principal de la simulación */
+.simulacion-container {
+  background-color: #ffffff;
+  padding: 30px;
+  font-family: "Segoe UI", Arial, sans-serif; /* Fuente moderna y legible */
+  color: #222; /* Color de texto oscuro para contraste */
+}
+
+/* Estilos para el título principal de la página */
+h1 {
+  text-align: center;
+  color: #004080; /* Azul oscuro corporativo */
+  margin-bottom: 30px;
+}
+
+/* 🔹 Contenedor conjunto de máquina y gráfica */
+.machine-graph-container {
+  display: flex; /* Utiliza Flexbox para organizar sus elementos hijos */
+  justify-content: center; /* Centra horizontalmente los bloques de máquina y gráfica */
+  align-items: flex-start; /* ✨ Alinea los elementos al inicio verticalmente (o 'center' si prefieres) */
+  flex-wrap: wrap; /* Permite que los elementos se envuelvan a la siguiente línea en pantallas pequeñas */
+  gap: 40px; /* Espacio entre la sección de la máquina y la gráfica */
+  margin-bottom: 30px;
+}
+
+/* 🔹 Sección de la máquina */
+.machine-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1; /* Permite que esta sección ocupe espacio flexible */
+  min-width: 300px; /* Ancho mínimo para la sección */
+  text-align: center;
+}
+
+/* 🔹 Imagen de la máquina */
+#machine {
+  width: 100%;        /* Ocupa todo el ancho disponible de su contenedor (.machine-section) */
+  max-width: 400px;   /* ✨ Ajustado para que la máquina no sea excesivamente grande.
+                        Este valor puede ser ajustado según el tamaño real de la imagen y tu diseño ideal. */
+  height: auto;       /* Mantiene la proporción de aspecto original de la imagen */
+  display: block;     /* Elimina el espacio extra debajo de las imágenes (si fuera inline) */
+  margin: 0 auto;     /* Centra la imagen horizontalmente dentro de .machine-section */
+  border: 2px solid #e0e0e0; /* Borde sutil alrededor de la imagen */
+  border-radius: 12px; /* Esquinas redondeadas para un look moderno */
+  background-color: #f9f9f9; /* Fondo claro detrás de la imagen */
+  padding: 15px;      /* Espacio interno entre el borde y la imagen */
+  box-sizing: border-box; /* ✨ Importante: Incluye padding y border en el 'width' total del elemento */
+  transition: transform 0.4s ease-out, box-shadow 0.3s ease; /* Transición suave para las animaciones */
+  /* 'ease-out' es a menudo preferible para movimientos que desaceleran */
+}
+
+/* ✨ Efecto visual cuando la máquina está "simulando" */
+#machine.simulando {
+  box-shadow: 0 0 20px rgba(0, 64, 128, 0.4); /* Sombra azul que se activa durante la simulación */
+  /* transform-origin: center;  Este es el valor por defecto y no es necesario especificarlo aquí */
+}
+
+/* 📈 SECCIÓN DE LA GRÁFICA */
+.graph-section {
+  flex: 1.2; /* Permite que la gráfica ocupe un poco más de espacio que la máquina */
+  min-width: 400px; /* Ancho mínimo para la sección de la gráfica */
+  text-align: center;
+}
+
+canvas#grafica {
+  width: 100%;
+  height: 320px; /* Altura fija para el canvas de la gráfica */
+  background: #fafafa; /* Fondo muy claro para el canvas */
+  border: 1px solid #ccc; /* Borde sutil para la gráfica */
+  border-radius: 8px; /* Esquinas redondeadas */
+}
+
+.placeholder-text {
+  margin-top: 10px;
+  font-size: 14px;
+  color: #777; /* Color de texto suave para el mensaje de placeholder */
+}
+
+/* 📊 SECCIÓN DE LOS CONTROLES */
+.controls {
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 40px;
+}
+
+.controls button {
+  background-color: #007bff; /* Azul primario para los botones */
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  margin: 0 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.controls button:hover {
+  background-color: #0056b3; /* Tono más oscuro al pasar el ratón */
+  transform: translateY(-2px); /* Pequeño efecto "pop" al pasar el ratón */
+}
+
+#reset-btn {
+  background-color: #6c757d; /* Gris para el botón de Reiniciar */
+}
+
+#reset-btn:hover {
+  background-color: #5a6268;
+}
+
+/* 📊 SECCIÓN DE LA TABLA */
+.table-section {
+  margin-top: 40px;
+  text-align: center;
+}
+
+.table-section h2 {
+  color: #004080;
+  margin-bottom: 15px;
+}
+
+#tabla-datos {
+  width: 90%; /* Ocupa el 90% del ancho del contenedor padre */
+  margin: 0 auto; /* Centra la tabla horizontalmente */
+  border-collapse: collapse; /* Bordes de celdas unidos */
+  font-size: 15px;
+}
+
+#tabla-datos th {
+  background-color: #004080; /* Fondo azul para los encabezados de tabla */
+  color: white;
+  padding: 10px;
+  text-align: center; /* Centra el texto en los encabezados */
+}
+
+#tabla-datos td {
+  border: 1px solid #ccc; /* Bordes de celda */
+  padding: 8px;
+  text-align: center;
+}
+
+#tabla-datos tr:nth-child(even) {
+  background-color: #f4f4f4; /* Rayas para mejorar la legibilidad de la tabla */
+}
+
+/* 📱 Responsivo: Ajustes para pantallas más pequeñas (móviles y tablets) */
+@media (max-width: 900px) {
+  .machine-graph-container {
+    flex-direction: column; /* Apila la máquina y la gráfica verticalmente */
+    align-items: center; /* Centra los elementos apilados */
+  }
+
+  #machine {
+    width: 80%; /* Reduce el ancho de la imagen de la máquina */
+    max-width: 300px; /* Asegura que no sea demasiado grande en móviles */
+    padding: 10px; /* Ajusta el padding para pantallas pequeñas */
+  }
+
+  canvas#grafica {
+    height: 280px; /* Ajusta la altura de la gráfica */
+  }
+
+  .controls button {
+    padding: 10px 20px; /* Ajusta el padding de los botones */
+    font-size: 14px; /* Reduce el tamaño de fuente de los botones */
+  }
+
+  #tabla-datos {
+    width: 95%; /* La tabla ocupa más ancho en pantallas pequeñas */
+  }
+}
+
+/* @media (max-width: 600px) { ... puedes añadir más ajustes para móviles muy pequeños si es necesario ... } */

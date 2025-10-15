@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
 from pathlib import Path
+import os # Aseguramos que 'os' esté importado para os.path.join si fuera necesario, aunque Path es más moderno.
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -34,9 +35,10 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles',
+    'django.contrib.staticfiles', # Asegúrate de que esta app esté siempre aquí para servir estáticos
     'rest_framework',
-    'core_lab',
+    'core_lab', # Tu aplicación
+    # Añade aquí cualquier otra aplicación que tengas
 ]
 
 MIDDLEWARE = [
@@ -54,8 +56,11 @@ ROOT_URLCONF = "SimuMaterial.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [],
-        "APP_DIRS": True,
+        "DIRS": [
+            # Aquí podrías añadir directorios de templates globales si los tuvieras,
+            # por ejemplo: BASE_DIR / 'templates'
+        ],
+        "APP_DIRS": True, # Esto permite que Django busque templates dentro de las carpetas 'templates' de tus apps
         "OPTIONS": {
             "context_processors": [
                 "django.template.context_processors.request",
@@ -114,7 +119,19 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
-STATIC_URL = "static/"
+STATIC_URL = "/static/"
+
+STATICFILES_DIRS = [
+    BASE_DIR / "core_lab" / "static", # Ruta donde Django busca estáticos en tu app 'core_lab'
+    # Si tuvieras una carpeta 'static' en la raíz de tu proyecto, la añadirías aquí:
+    # BASE_DIR / "static",
+]
+
+# ✨ AÑADIDO: Ruta donde `collectstatic` copiará todos los archivos estáticos para producción.
+# Esta carpeta (ej. 'staticfiles_collected') se creará en la raíz de tu proyecto.
+# ¡Debe ser una carpeta distinta y vacía para los archivos colectados!
+STATIC_ROOT = BASE_DIR / "staticfiles_collected" 
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field

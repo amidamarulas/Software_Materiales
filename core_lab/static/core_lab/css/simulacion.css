@@ -1,58 +1,145 @@
+/* core_lab/static/core_lab/css/simulacion.css */
+
+/* === Estructura general === */
 .simulacion-container {
-  text-align: center;
-  background-color: #ffffff;
+  max-width: 900px;
+  margin: 0 auto;
   padding: 20px;
+  text-align: center;
+  font-family: "Segoe UI", sans-serif;
 }
 
-.machine-section {
-  display: flex;
-  justify-content: center;
-  margin: 20px 0;
+.simulacion-container h1 {
+  margin-bottom: 20px;
+  font-size: 1.8rem;
+  color: #222;
 }
 
-#machine {
-  width: 300px;
-  transition: transform 1s ease;
-}
-
-.controls {
+/* === Selector de modo === */
+.modo-selector {
   margin-bottom: 20px;
 }
 
-button {
-  background-color: #004080;
-  color: white;
-  border: none;
-  padding: 10px 18px;
-  margin: 5px;
+.modo-selector select {
+  padding: 8px 12px;
+  font-size: 1rem;
   border-radius: 8px;
-  cursor: pointer;
-  font-size: 15px;
+  border: 1px solid #ccc;
 }
 
-button:hover {
-  background-color: #0066cc;
+/* === Sección máquina + gráfica === */
+.machine-graph-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 30px;
+  flex-wrap: wrap;
+  margin-bottom: 25px;
 }
 
+/* Imagen máquina */
+.machine-section {
+  position: relative;
+}
+
+.machine-section img {
+  width: 260px;
+  max-width: 100%;
+}
+
+/* Mordazas */
+#mordaza-superior,
+#mordaza-inferior {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 10px;
+  background-color: #555;
+}
+
+#mordaza-superior {
+  top: 40px;
+}
+
+#mordaza-inferior {
+  bottom: 40px;
+}
+
+/* === Gráfica === */
 .graph-section {
-  margin: 30px auto;
-  width: 80%;
-}
-
-.table-section {
-  margin-top: 30px;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-#tabla-datos {
-  width: 80%;
-  border-collapse: collapse;
+.graph-section canvas {
+  display: block;
+  width: 600px !important;
+  height: 300px !important;
+  max-width: 600px;
+  max-height: 300px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background: #fafafa;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 }
 
-#tabla-datos th, #tabla-datos td {
+.placeholder-text {
+  margin-top: 10px;
+  font-style: italic;
+  color: #777;
+}
+
+/* === Controles === */
+.controls {
+  margin: 20px 0;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.controls button {
+  background: #007bff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 18px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.controls button:hover {
+  background: #0056b3;
+}
+
+/* === Tabla de datos === */
+.table-section {
+  margin-top: 25px;
+}
+
+.table-section h2 {
+  margin-bottom: 10px;
+}
+
+.table-section table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0 auto;
+}
+
+.table-section th,
+.table-section td {
   border: 1px solid #ccc;
-  padding: 8px;
+  padding: 6px 10px;
   text-align: center;
+}
+
+.table-section th {
+  background: #e9ecef;
+}
+
+.table-section tr:nth-child(even) {
+  background: #f9f9f9;
 }

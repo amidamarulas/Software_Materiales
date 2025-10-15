@@ -2,23 +2,49 @@
 {% load static %}
 
 {% block content %}
+<link rel="stylesheet" href="{% static 'core_lab/css/simulacion.css' %}">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="{% static 'core_lab/js/simulacion.js' %}" defer></script>
+
 <div class="simulacion-container">
   <h1>Máquina Universal de Ensayos</h1>
 
-  <div class="machine-section">
-    <img id="machine" src="{% static 'core_lab/images/maquina_ensayo.png' %}" alt="Máquina de Ensayo">
+  <!-- 🔽 Menú para elegir el tipo de ensayo -->
+  <div class="modo-selector">
+    <label for="tipo-ensayo">Selecciona el tipo de ensayo:</label>
+    <select id="tipo-ensayo">
+      <option value="traccion">Tracción</option>
+      <option value="compresion">Compresión</option>
+    </select>
   </div>
 
+  <!-- 🔧 Contenedor principal de simulación -->
+  <div class="machine-graph-container">
+    <div class="machine-section">
+      <!-- Imagen base de la máquina -->
+      <div class="machine-wrapper">
+        <img id="machine" src="{% static 'core_lab/images/maquina_ensayo_nueva.png' %}" alt="Máquina de Ensayo Universal">
+
+        <!-- Mordazas (se mueven individualmente) -->
+        <div id="mordaza-superior"></div>
+        <div id="mordaza-inferior"></div>
+      </div>
+    </div>
+
+    <!-- 📈 Gráfica fija -->
+    <div class="graph-section">
+      <canvas id="grafica" width="600" height="300"></canvas>
+      <p class="placeholder-text">La gráfica está vacía (próximamente se generarán los datos).</p>
+    </div>
+  </div>
+
+  <!-- 🎛️ Controles -->
   <div class="controls">
     <button id="play-btn">▶ Iniciar Simulación</button>
     <button id="reset-btn">🔁 Reiniciar</button>
   </div>
 
-  <div class="graph-section">
-    <canvas id="grafica" width="600" height="300"></canvas>
-    <p class="placeholder-text">La gráfica está vacía (próximamente se generarán los datos).</p>
-  </div>
-
+  <!-- 📊 Tabla de datos -->
   <div class="table-section">
     <h2>Datos del Ensayo</h2>
     <table id="tabla-datos">
