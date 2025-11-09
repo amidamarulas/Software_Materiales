@@ -9,32 +9,38 @@
 <div class="simulacion-container">
   <h1>Máquina Universal de Ensayos</h1>
 
-  <!-- 🔽 Menú para elegir el tipo de ensayo -->
+  <!-- 🔽 Menús de selección -->
   <div class="modo-selector">
+    <label for="material">Selecciona el material:</label>
+    <select id="material">
+      <option value="" disabled selected>-- Selecciona un material --</option>
+      {% for mat in materiales %}
+        <option value="{{ mat.nombre }}">{{ mat.nombre }}</option>
+      {% endfor %}
+    </select>
+
     <label for="tipo-ensayo">Selecciona el tipo de ensayo:</label>
     <select id="tipo-ensayo">
-      <option value="traccion">Tracción</option>
+      <option value="" disabled selected>-- Selecciona un tipo de ensayo --</option>
+      <option value="tension">Tensión</option>
       <option value="compresion">Compresión</option>
+      <option value="flexion">Flexión</option>
     </select>
   </div>
 
   <!-- 🔧 Contenedor principal de simulación -->
   <div class="machine-graph-container">
     <div class="machine-section">
-      <!-- Imagen base de la máquina -->
       <div class="machine-wrapper">
         <img id="machine" src="{% static 'core_lab/images/maquina_ensayo_nueva.png' %}" alt="Máquina de Ensayo Universal">
-
-        <!-- Mordazas (se mueven individualmente) -->
         <div id="mordaza-superior"></div>
         <div id="mordaza-inferior"></div>
       </div>
     </div>
 
-    <!-- 📈 Gráfica fija -->
     <div class="graph-section">
       <canvas id="grafica" width="600" height="300"></canvas>
-      <p class="placeholder-text">La gráfica está vacía (próximamente se generarán los datos).</p>
+      <p class="placeholder-text">Selecciona un material y tipo de ensayo para iniciar la simulación.</p>
     </div>
   </div>
 

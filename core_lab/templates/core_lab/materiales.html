@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="materials-container" style="max-width: 800px; margin: auto; padding: 20px;">
+  <h1>Conjuntos de Datos de Materiales Disponibles</h1>
+  <p>Aquí puedes descargar los datos crudos en formato CSV utilizados en las simulaciones.</p>
+
+  {% if materiales_disponibles %}
+    {% for material, ensayos in materiales_disponibles.items %}
+      <div class="material-card" style="background-color: #ffffff; border: 1px solid #ddd; border-radius: 8px; margin-bottom: 20px; padding: 20px;">
+        <h2 style="margin-top: 0;">{{ material }}</h2>
+        <p>Datos de ensayos disponibles para descargar:</p>
+        <ul style="list-style-type: none; padding-left: 0;">
+          {% for ensayo in ensayos %}
+            <li style="margin-bottom: 10px;">
+              <!-- El enlace de descarga -->
+              <a href="{% url 'descargar_csv' material_nombre=material tipo_ensayo=ensayo %}" 
+                 style="text-decoration: none; background-color: #007bff; color: white; padding: 8px 15px; border-radius: 5px; display: inline-block;">
+                Descargar Ensayo de {{ ensayo|capfirst }}
+              </a>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+    {% endfor %}
+  {% else %}
+    <p>No se encontraron conjuntos de datos de materiales.</p>
+  {% endif %}
+
+</div>
+{% endblock %}

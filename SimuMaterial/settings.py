@@ -35,10 +35,12 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles', # Asegúrate de que esta app esté siempre aquí para servir estáticos
+    'django.contrib.staticfiles',
     'rest_framework',
-    'core_lab', # Tu aplicación
-    # Añade aquí cualquier otra aplicación que tengas
+    'core_lab',
+    'materials',      # 👈 agrega esta línea
+    'simulations',    # 👈 y si tienes la app simulations, también
+    'app_users',      # 👈 y tu app de usuarios si la hay
 ]
 
 MIDDLEWARE = [
