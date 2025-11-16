@@ -1,0 +1,5 @@
+name,young_modulus_e,yield_strength_sy,poisson_ratio_v
+Polipropileno,1.3e9,12e6,0.42
+LDPE,0.4e9,10e6,0.45
+Nylon 6,2.5e9,75e6,0.39
+Resina Epoxica,3.5e9,85e6,0.37

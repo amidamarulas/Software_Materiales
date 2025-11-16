@@ -1,18 +1,15 @@
+# en materials/models.py
 from django.db import models
 
 class Material(models.Model):
-    nombre = models.CharField(max_length=100, unique=True)
+    name = models.CharField(max_length=100, unique=True)
+    # Módulo de Young en Pascales (Pa)
+    young_modulus_e = models.FloatField()
+    # Límite elástico en Pascales (Pa)
+    yield_strength_sy = models.FloatField()
+    # Coeficiente de Poisson (adimensional)
+    poisson_ratio_v = models.FloatField()
+    # ... otros campos que necesites ...
 
     def __str__(self):
-        return self.nombre
-
-
-class Resultado(models.Model):
-    material = models.ForeignKey(Material, on_delete=models.CASCADE)
-    deformacion = models.FloatField()
-    esfuerzo = models.FloatField()
-    tiempo = models.FloatField(null=True, blank=True)
-    temperatura = models.FloatField(null=True, blank=True)
-
-    def __str__(self):
-        return f"{self.material.nombre} - ε={self.deformacion}, σ={self.esfuerzo}"
+        return self.name
